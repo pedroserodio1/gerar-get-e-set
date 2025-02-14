@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Getters e Setters</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Gerador de Métodos</h2>
+      <label for="nome">Nome da variável:</label>
+      <input type="text" id="nome" placeholder="Ex: precoProduto" />
+
+      <label for="tipo">Tipo da variável:</label>
+      <input type="text" id="tipo" placeholder="Ex: BigDecimal" />
+
+      <button onclick="gerar()">Gerar Métodos</button>
+    </div>
+
+    <div class="resultado">
+        <h2>Get</h2>
+        <pre id="get"></pre>
+        <button class="copy-btn" onclick="copiarTexto('get')">Copiar</button>
+      
+        <h2>Set</h2>
+        <pre id="set"></pre>
+        <button class="copy-btn" onclick="copiarTexto('set')">Copiar</button>
+      
+        <br/><br/>
+        <button class="copy-btn copiar-tudo" onclick="copiarTudo()">Copiar Tudo</button>
+    </div>
+      
+
+    <script type="text/javascript" src="src/script.js"></script>
+  </body>
+</html>
