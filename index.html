@@ -1,37 +1,76 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gerador de Getters e Setters</title>
-    <link rel="stylesheet" href="src/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h2>Gerador de Métodos</h2>
-      <label for="nome">Nome da variável:</label>
-      <input type="text" id="nome" placeholder="Ex: precoProduto" />
 
-      <label for="tipo">Tipo da variável:</label>
-      <input type="text" id="tipo" placeholder="Ex: BigDecimal" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Métodos</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
 
-      <button onclick="gerar()">Gerar Métodos</button>
+<body>
+    <nav>
+        <ul class="menu">
+            <li class="menu-item active" data-section="gerador">Gerar Get/Set</li>
+            <li class="menu-item" data-section="alter-table">Gerar ALTER TABLE</li>
+            <li class="menu-item" data-section="historico">Histórico</li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <!-- Seção Get/Set -->
+        <section id="gerador" class="section active">
+            <h2>Gerador de Getters e Setters</h2>
+            <input type="text" id="nome" placeholder="Nome da variável (Ex: precoProduto)">
+            <input type="text" id="tipo" placeholder="Tipo (Ex: BigDecimal)">
+            <label class="checkbox">
+                <input type="checkbox" id="isList"> É uma lista?
+            </label>
+
+            <button onclick="gerar()">Gerar Métodos</button>
+            <button onclick="copiarTudo()" class="secondary">Copiar Tudo</button>
+            <button onclick="abrirEditorTemplates()" class="secondary">⚙️ Editar Templates</button>
+
+            <div class="resultado">
+                <div class="code-group">
+                    <pre id="get"></pre>
+                    <button onclick="copiarTexto('get')">📋 Get</button>
+                </div>
+                <div class="code-group">
+                    <pre id="set"></pre>
+                    <button onclick="copiarTexto('set')">📋 Set</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção ALTER TABLE -->
+        <section id="alter-table" class="section">
+            <h2>Gerador de ALTER TABLE</h2>
+            <input type="text" id="nome-tabela" placeholder="Nome da tabela">
+            <button onclick="adicionarColuna()">➕ Adicionar Coluna</button>
+
+            <div id="colunas-container" class="colunas-container"></div>
+
+            <button onclick="gerarAlterTable()">Gerar SQL</button>
+
+            <!-- Altere esta parte -->
+            <div class="resultado">
+                <pre id="alter-table-sql"></pre> <!-- ID corrigido -->
+                <button onclick="copiarTexto('alter-table-sql')">📋 Copiar SQL</button>
+            </div>
+        </section>
+
+        <!-- Seção Histórico -->
+        <section id="historico" class="section">
+            <h2>Histórico</h2>
+            <button onclick="limparHistorico()" class="danger">🧹 Limpar Histórico</button>
+            <button onclick="exportarHistorico()" class="secondary">📥 Exportar Histórico</button>
+            <div id="historico-list" class="historico-list"></div>
+        </section>
     </div>
 
-    <div class="resultado">
-        <h2>Get</h2>
-        <pre id="get"></pre>
-        <button class="copy-btn" onclick="copiarTexto('get')">Copiar</button>
-      
-        <h2>Set</h2>
-        <pre id="set"></pre>
-        <button class="copy-btn" onclick="copiarTexto('set')">Copiar</button>
-      
-        <br/><br/>
-        <button class="copy-btn copiar-tudo" onclick="copiarTudo()">Copiar Tudo</button>
-    </div>
-      
+    <script src="src/js/script.js"></script>
+</body>
 
-    <script type="text/javascript" src="src/script.js"></script>
-  </body>
 </html>
